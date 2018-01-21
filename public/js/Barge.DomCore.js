@@ -2533,7 +2533,6 @@ var Barge = Barge || {};
 
                if (useContent)
                {
-                  ;
                }
 
                tr.appendChild(td);

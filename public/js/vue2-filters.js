@@ -134,20 +134,20 @@
          });
 
          util.toArray = function(list, start) {
-            start = start || 0
-            var i = list.length - start
-            var ret = new Array(i)
+            start = start || 0;
+            var i = list.length - start;
+            var ret = new Array(i);
             while (i--) {
                ret[i] = list[i + start]
             }
             return ret
-         }
+         };
 
          util.toNumber = function(value) {
             if (typeof value !== 'string') {
                return value
             } else {
-               var parsed = Number(value)
+               var parsed = Number(value);
                return isNaN(parsed)
                   ? value
                   : parsed
@@ -159,12 +159,12 @@
                return value
             } else if (util.isPlainObject(value)) {
                // convert plain object to array.
-               var keys = Object.keys(value)
-               var i = keys.length
-               var res = new Array(i)
-               var key
+               var keys = Object.keys(value);
+               var i = keys.length;
+               var res = new Array(i);
+               var key;
                while (i--) {
-                  key = keys[i]
+                  key = keys[i];
                   res[i] = {
                      $key: key,
                      $value: value[key]
@@ -174,7 +174,7 @@
             } else {
                return value || []
             }
-         }
+         };
 
          function multiIndex(obj,is) {  // obj,['1','2','3'] -> ((obj['1'])['2'])['3']
             return is.length ? multiIndex(obj[is[0]],is.slice(1)) : obj
@@ -182,7 +182,7 @@
 
          util.getPath = function(obj,is) {   // obj,'1.2.3' -> multiIndex(obj,['1','2','3'])
             return multiIndex(obj,is.split('.'))
-         }
+         };
 
          /**
           * Strict object type check. Only returns true
@@ -192,11 +192,11 @@
           * @return {Boolean}
           */
 
-         var toString = Object.prototype.toString
-         var OBJECT_STRING = '[object Object]'
+         var toString = Object.prototype.toString;
+         var OBJECT_STRING = '[object Object]';
          util.isPlainObject = function (obj) {
             return toString.call(obj) === OBJECT_STRING
-         }
+         };
 
          /* harmony default export */ __webpack_exports__["a"] = (util);
 
@@ -217,7 +217,7 @@
           */
 
          function filterBy (arr, search) {
-            var arr = __WEBPACK_IMPORTED_MODULE_0__util_index__["a" /* default */].convertArray(arr)
+            var arr = __WEBPACK_IMPORTED_MODULE_0__util_index__["a" /* default */].convertArray(arr);
             if (search == null) {
                return arr
             }
@@ -225,22 +225,22 @@
                return arr.filter(search)
             }
             // cast to lowercase string
-            search = ('' + search).toLowerCase()
-            var n = 2
+            search = ('' + search).toLowerCase();
+            var n = 2;
             // extract and flatten keys
-            var keys = Array.prototype.concat.apply([], __WEBPACK_IMPORTED_MODULE_0__util_index__["a" /* default */].toArray(arguments, n))
-            var res = []
-            var item, key, val, j
+            var keys = Array.prototype.concat.apply([], __WEBPACK_IMPORTED_MODULE_0__util_index__["a" /* default */].toArray(arguments, n));
+            var res = [];
+            var item, key, val, j;
             for (var i = 0, l = arr.length; i < l; i++) {
-               item = arr[i]
-               val = (item && item.$value) || item
-               j = keys.length
+               item = arr[i];
+               val = (item && item.$value) || item;
+               j = keys.length;
                if (j) {
                   while (j--) {
-                     key = keys[j]
+                     key = keys[j];
                      if ((key === '$key' && contains(item.$key, search)) ||
                          contains(__WEBPACK_IMPORTED_MODULE_0__util_index__["a" /* default */].getPath(val, key), search)) {
-                        res.push(item)
+                        res.push(item);
                         break
                      }
                   }
@@ -252,17 +252,17 @@
          }
 
          function contains (val, search) {
-            var i
+            var i;
             if (__WEBPACK_IMPORTED_MODULE_0__util_index__["a" /* default */].isPlainObject(val)) {
-               var keys = Object.keys(val)
-               i = keys.length
+               var keys = Object.keys(val);
+               i = keys.length;
                while (i--) {
                   if (contains(val[keys[i]], search)) {
                      return true
                   }
                }
             } else if (__WEBPACK_IMPORTED_MODULE_0__util_index__["a" /* default */].isArray(val)) {
-               i = val.length
+               i = val.length;
                while (i--) {
                   if (contains(val[i], search)) {
                      return true
@@ -294,11 +294,11 @@
             install: function(Vue) {
                __WEBPACK_IMPORTED_MODULE_0__util_index__["a" /* default */].each(__WEBPACK_IMPORTED_MODULE_1__string_index__, function(value, key) {
                   Vue.filter(key, value)
-               })
+               });
 
                __WEBPACK_IMPORTED_MODULE_0__util_index__["a" /* default */].each(__WEBPACK_IMPORTED_MODULE_3__other_index__, function(value, key) {
                   Vue.filter(key, value)
-               })
+               });
 
                Vue.mixin({
                             methods: {
@@ -309,7 +309,7 @@
                             }
                          })
             }
-         }
+         };
 
          /* harmony default export */ __webpack_exports__["default"] = (Vue2Filters);
 
@@ -354,8 +354,8 @@
           */
 
          function capitalize (value) {
-            if (!value && value !== 0) return ''
-            value = value.toString()
+            if (!value && value !== 0) return '';
+            value = value.toString();
             return value.charAt(0).toUpperCase() + value.slice(1)
          }
 
@@ -431,9 +431,9 @@
           */
 
          function truncate (value, length) {
-            length = length || 15
-            if( !value || typeof value !== 'string' ) return ''
-            if( value.length <= length) return value
+            length = length || 15;
+            if( !value || typeof value !== 'string' ) return '';
+            if( value.length <= length) return value;
             return value.substring(0, length) + '...'
          }
 
@@ -477,8 +477,8 @@
           */
 
          function limitBy (arr, n, offset) {
-            offset = offset ? parseInt(offset, 10) : 0
-            n = __WEBPACK_IMPORTED_MODULE_0__util_index__["a" /* default */].toNumber(n)
+            offset = offset ? parseInt(offset, 10) : 0;
+            n = __WEBPACK_IMPORTED_MODULE_0__util_index__["a" /* default */].toNumber(n);
             return typeof n === 'number'
                ? arr.slice(offset, offset + n)
                : arr
@@ -502,22 +502,22 @@
           */
 
          function orderBy (arr) {
-            var comparator = null
-            var sortKeys
-            arr = __WEBPACK_IMPORTED_MODULE_0__util_index__["a" /* default */].convertArray(arr)
+            var comparator = null;
+            var sortKeys;
+            arr = __WEBPACK_IMPORTED_MODULE_0__util_index__["a" /* default */].convertArray(arr);
 
             // determine order (last argument)
-            var args = __WEBPACK_IMPORTED_MODULE_0__util_index__["a" /* default */].toArray(arguments, 1)
-            var order = args[args.length - 1]
+            var args = __WEBPACK_IMPORTED_MODULE_0__util_index__["a" /* default */].toArray(arguments, 1);
+            var order = args[args.length - 1];
             if (typeof order === 'number') {
-               order = order < 0 ? -1 : 1
+               order = order < 0 ? -1 : 1;
                args = args.length > 1 ? args.slice(0, -1) : args
             } else {
                order = 1
             }
 
             // determine sortKeys & comparator
-            var firstArg = args[0]
+            var firstArg = args[0];
             if (!firstArg) {
                return arr
             } else if (typeof firstArg === 'function') {
@@ -527,9 +527,9 @@
                }
             } else {
                // string keys. flatten first
-               sortKeys = Array.prototype.concat.apply([], args)
+               sortKeys = Array.prototype.concat.apply([], args);
                comparator = function (a, b, i) {
-                  i = i || 0
+                  i = i || 0;
                   return i >= sortKeys.length - 1
                      ? baseCompare(a, b, i)
                      : baseCompare(a, b, i) || comparator(a, b, i + 1)
@@ -537,13 +537,13 @@
             }
 
             function baseCompare (a, b, sortKeyIndex) {
-               var sortKey = sortKeys[sortKeyIndex]
+               var sortKey = sortKeys[sortKeyIndex];
                if (sortKey) {
                   if (sortKey !== '$key') {
-                     if (__WEBPACK_IMPORTED_MODULE_0__util_index__["a" /* default */].isObject(a) && '$value' in a) a = a.$value
+                     if (__WEBPACK_IMPORTED_MODULE_0__util_index__["a" /* default */].isObject(a) && '$value' in a) a = a.$value;
                      if (__WEBPACK_IMPORTED_MODULE_0__util_index__["a" /* default */].isObject(b) && '$value' in b) b = b.$value
                   }
-                  a = __WEBPACK_IMPORTED_MODULE_0__util_index__["a" /* default */].isObject(a) ? __WEBPACK_IMPORTED_MODULE_0__util_index__["a" /* default */].getPath(a, sortKey) : a
+                  a = __WEBPACK_IMPORTED_MODULE_0__util_index__["a" /* default */].isObject(a) ? __WEBPACK_IMPORTED_MODULE_0__util_index__["a" /* default */].getPath(a, sortKey) : a;
                   b = __WEBPACK_IMPORTED_MODULE_0__util_index__["a" /* default */].isObject(b) ? __WEBPACK_IMPORTED_MODULE_0__util_index__["a" /* default */].getPath(b, sortKey) : b
                }
                return a === b ? 0 : a > b ? order : -order
@@ -610,23 +610,23 @@
           */
 
          function currency (value, currency, decimals) {
-            var digitsRE = /(\d{3})(?=\d)/g
-            value = parseFloat(value)
-            if (!isFinite(value) || (!value && value !== 0)) return ''
-            currency = currency != null ? currency : '$'
-            decimals = decimals != null ? decimals : 2
-            var stringified = Math.abs(value).toFixed(decimals)
+            var digitsRE = /(\d{3})(?=\d)/g;
+            value = parseFloat(value);
+            if (!isFinite(value) || (!value && value !== 0)) return '';
+            currency = currency != null ? currency : '$';
+            decimals = decimals != null ? decimals : 2;
+            var stringified = Math.abs(value).toFixed(decimals);
             var _int = decimals
                ? stringified.slice(0, -1 - decimals)
-               : stringified
-            var i = _int.length % 3
+               : stringified;
+            var i = _int.length % 3;
             var head = i > 0
                ? (_int.slice(0, i) + (_int.length > 3 ? ',' : ''))
-               : ''
+               : '';
             var _float = decimals
                ? stringified.slice(-1 - decimals)
-               : ''
-            var sign = value < 0 ? '-' : ''
+               : '';
+            var sign = value < 0 ? '-' : '';
             return sign + currency + head +
                    _int.slice(i).replace(digitsRE, '$1,') +
                    _float
@@ -656,7 +656,7 @@
           */
 
          function pluralize (value) {
-            var args = __WEBPACK_IMPORTED_MODULE_0__util_index__["a" /* default */].toArray(arguments, 1)
+            var args = __WEBPACK_IMPORTED_MODULE_0__util_index__["a" /* default */].toArray(arguments, 1);
             return args.length > 1
                ? (args[value % 10 - 1] || args[args.length - 1])
                : (args[0] + (value === 1 ? '' : 's'))

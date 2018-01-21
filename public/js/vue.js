@@ -951,7 +951,7 @@ var arrayMethods = Object.create(arrayProto);[
       case 'push':
       case 'unshift':
         inserted = args;
-        break
+        break;
       case 'splice':
         inserted = args.slice(2);
         break
@@ -6202,14 +6202,14 @@ function parseFilters (exp) {
       }
     } else {
       switch (c) {
-        case 0x22: inDouble = true; break         // "
-        case 0x27: inSingle = true; break         // '
-        case 0x60: inTemplateString = true; break // `
-        case 0x28: paren++; break                 // (
-        case 0x29: paren--; break                 // )
-        case 0x5B: square++; break                // [
-        case 0x5D: square--; break                // ]
-        case 0x7B: curly++; break                 // {
+        case 0x22: inDouble = true; break;         // "
+        case 0x27: inSingle = true; break;         // '
+        case 0x60: inTemplateString = true; break; // `
+        case 0x28: paren++; break;                 // (
+        case 0x29: paren--; break;                 // )
+        case 0x5B: square++; break;                // [
+        case 0x5D: square--; break;                // ]
+        case 0x7B: curly++; break;                 // {
         case 0x7D: curly--; break                 // }
       }
       if (c === 0x2f) { // /

@@ -1,28 +1,28 @@
-const express = require('express')
-const http = require('http')
-const bitCoin = require('./bitcoin')
+const express = require('express');
+const http = require('http');
+const bitCoin = require('./bitcoin');
 
-const index = require('./routes/index')
+const index = require('./routes/index');
 
-const app = express()
-const server = http.createServer(app)
+const app = express();
+const server = http.createServer(app);
 
-const io = require('socket.io').listen(server)
+const io = require('socket.io').listen(server);
 
 
-app.set('view engine', 'ejs')
+app.set('view engine', 'ejs');
 app.use(express.static('public'));
 
 
-app.use('/', index)
+app.use('/', index);
 
-bitCoin(io)
+bitCoin(io);
 
 io.on('connection', () => {
    console.log('Server Connected')
-})
+});
 
 
 
 
-server.listen(3000)
+server.listen(3000);

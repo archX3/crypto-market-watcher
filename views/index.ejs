@@ -1,11 +1,100 @@
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
     <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-  </body>
+    <!--<link rel='stylesheet' href='/stylesheets/style.css' />-->
+    <link rel='stylesheet' href='/stylesheets/style.css'/>
+    <link rel='stylesheet' href='/css/vendor/bumble-bee-css/css/root.css'/>
+    <link rel='stylesheet' href='/css/vendor/bumble-bee-css/css/core.css'/>
+    <link rel='stylesheet' href='/css/vendor/bumble-bee-css/css/colors.css'/>
+    <link rel='stylesheet' href='/css/vendor/bumble-bee-css/css/coreBreakDown/table.css'/>
+    <!--<link rel='stylesheet' href='../public/css/vendor/bumble-bee-css/css/core.css' />-->
+
+    <link rel='stylesheet' href='/css/custom.css'/>
+    <!--<script src="https://d3dy5gmtp8yhk7.cloudfront.net/2.1.6/sockjs.min.js" type="text/javascript" async="true"></script>-->
+</head>
+<body>
+<div class="h150 w150 m0a rc50p bdr ctr">crypto watcher</div>
+
+<!--<h1><%= title %></h1>-->
+<!--<h1><%#= apiData %></h1>-->
+<!--<h1></h1>-->
+<h1 class="ctr pd10 m10">CRYPTO-WATCHER</h1>
+<!--<p>Welcome to </p>-->
+
+<section class="fph ha pdlr10p" id="cryptos-container">
+    <table class="data-table medium bdr">
+        <thead>
+
+            <tr>
+                <td>Rank</td>
+                <td>Name</td>
+                <td>Symbol</td>
+                <td>Price (USD)</td>
+                <td>1H</td>
+                <td>1D</td>
+                <td>1W</td>
+                <td>Market Cap (USD)</td>
+        </thead>
+        <tbody>
+            <tr v-for="coin in coins">
+                <td>{{ coin.rank }}</td>
+                <td><img v-bind:src="getCoinImage(coin.symbol)"> {{ coin.name }}</td>
+                <td>{{ coin.symbol }}</td>
+                <td>{{ coin.price_usd | currency }}</td>
+                <td>
+                    <span v-if="coin.percent_change_1h > 0">+</span>{{ coin.percent_change_1h }}%
+                </td>
+                <td>
+                    <span v-if="coin.percent_change_24h > 0">+</span>{{ coin.percent_change_24h }}%
+                </td>
+                <td>
+                    <span v-if="coin.percent_change_7d > 0">+</span>{{ coin.percent_change_7d }}%
+                </td>
+                <td>{{ coin.market_cap_usd | currency }}</td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+<div id="bids_placeholder"></div>
+<script src="http://localhost:3000/socket.io/socket.io.js"></script>
+<script src="/js/socket.js"></script>
+<script src="/js/base.min.js"></script>
+<script src="/js/Barge.DomCore.js"></script>
+<script src="/js/Barge.Events.js"></script>
+<!--<script src="/js/Barge.Events.EventType.js"></script>-->
+<script src="/js/Barge.Dom.TableSorter.js"></script>
+<script src="/js/Barge.Dom.Table.js"></script>
+<script src="/js/Barge.Ajax.js"></script>
+
+<script src="/js/vue.js"></script>
+<script src="/js/vue2-filters.min.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<!--<script src="https://d3dy5gmtp8yhk7.cloudfront.net/2.1/pusher.min.js"></script>-->
+<script src="/js/crypto.js"></script>
+
+
+<script>
+   /*var bidsPlaceholder = document.getElementById("bids_placeholder"),
+       asksPlaceholder = document.getElementById("asks_placeholder"),
+       pusher = new Pusher('de504dc5763aeef9ff52'),
+       orderBookChannel = pusher.subscribe('order_book'),
+       i = 0;
+
+   orderBookChannel.bind('data', function (data) {
+      bidsPlaceholder.innerHTML = '';
+      asksPlaceholder.innerHTML = '';
+
+      for(i = 0; i < data.bids.length; i += 1) {
+         bidsPlaceholder.innerHTML = bidsPlaceholder.innerHTML + data.bids[i][1] + ' BTC @ ' + data.bids[i][0] + ' USD' + '<br />';
+      }
+      for(i = 0; i < data.asks.length; i += 1) {
+         asksPlaceholder.innerHTML = asksPlaceholder.innerHTML + data.asks[i][1] + ' BTC @ ' + data.asks[i][0] + ' USD' + '<br />';
+      }
+   });*/
+</script>
+<script >
+    console.log(<%# ama %>);
+</script>
+</body>
 </html>

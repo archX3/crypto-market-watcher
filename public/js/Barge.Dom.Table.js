@@ -682,6 +682,15 @@ var Barge = Barge || {};
 
    /**
     *
+    * @returns {void}
+    */
+   Table.prototype.clearRows = function ()
+   {
+      Bd.removeChildren(this.body);
+   };
+
+   /**
+    *
     * @param rowId
     */
    Table.prototype.openRow = function (rowId)

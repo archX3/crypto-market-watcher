@@ -26,18 +26,28 @@
     <table class="data-table medium bdr">
         <thead>
 
+            <!--<tr>-->
+                <!--<td>Rank</td>-->
+                <!--<td>Name</td>-->
+                <!--<td>Symbol</td>-->
+                <!--<td>Price (USD)</td>-->
+                <!--<td>1H</td>-->
+                <!--<td>1D</td>-->
+                <!--<td>1W</td>-->
+                <!--<td>Market Cap (USD)</td>-->
+            <!--</tr>-->
             <tr>
-                <td>Rank</td>
-                <td>Name</td>
-                <td>Symbol</td>
-                <td>Price (USD)</td>
-                <td>1H</td>
-                <td>1D</td>
-                <td>1W</td>
-                <td>Market Cap (USD)</td>
+                <th>ID</th>
+                <th>BUY ORDER ID</th>
+                <th>SELL ORDER ID</th>
+                <th>CURRENCY</th>
+                <th>AMOUNT</th>
+                <th>PRICE</th>
+                <th>DATE</th>
+            </tr>
         </thead>
         <tbody>
-            <tr v-for="coin in coins">
+            <!--<tr v-for="coin in coins">
                 <td>{{ coin.rank }}</td>
                 <td><img v-bind:src="getCoinImage(coin.symbol)"> {{ coin.name }}</td>
                 <td>{{ coin.symbol }}</td>
@@ -52,13 +62,13 @@
                     <span v-if="coin.percent_change_7d > 0">+</span>{{ coin.percent_change_7d }}%
                 </td>
                 <td>{{ coin.market_cap_usd | currency }}</td>
-            </tr>
+            </tr>-->
         </tbody>
     </table>
 </section>
 <div id="bids_placeholder"></div>
 <script src="http://localhost:3000/socket.io/socket.io.js"></script>
-<script src="/js/socket.js"></script>
+<!--<script src="/js/socket.js"></script>-->
 
 <script src="/js/base.min.js"></script>
 <script src="/js/Barge.DomCore.js"></script>

@@ -8,35 +8,50 @@
        Bm = Barge.Math,
        Bd = Barge.Dom;
 
-
-
    let socket = io.connect('http://localhost:3000');
-
-   socket.on('connect', function(){
-      console.log('Connected from Client')
-   });
-
-   socket.on('bitcoin', function(data){
-      console.log(data);
-
-      Table.clearRows();
-      Table.insert([[data["id"], data["buy_order_id"], data["sell_order_id"], data["currency"], data["amount"], data["price"], new Date(data["timestamp"])]]);
-   });
 
    let Table = new Barge.Dom.Table(Bd.getEl(".data-table"), { stickOnScroll : false }),
        jx    = new Barge.Ajax();
-   //console.log(Table);
-/*
-* amount: 0.0462
-buy_order_id: 811204896
-currency: "USD"
-id: 48675703
-price: 11609.52
-provider: "BitStamp"
-sell_order_id: 811204889
-timestamp: "1516597021"*/
 
+   socket.on('connect', function ()
+   {
+      console.log('Connected from Client')
+   });
 
+   socket.on('bitcoin', function (data)
+   {
+      console.log(data);
 
+      Table.clearRows();
+
+      Table.insert([
+                      [
+                         data["bitstamp"],
+                         data["gdax"],
+                         data["bitMex"],
+                         data["bittrex"],
+                         data["bitfinex"],
+                         data["cex"],
+                         data["okcoin"],
+                         data["poloniex"],
+                         data["gemini"]
+                      ]
+                   ]);
+   });
+
+   //Table.insert([["id", "buy_order_id", "sell_order_id", "currency", "amount", "price", "timestamp"]]);
+
+   /*
+   let app = new Vue({
+                        el      : "#cryptos-container",
+                        data    : {
+                           title      : "Nana is coming",
+                           author     : "Nana",
+                           src        : "my_loc",
+                           name       : "didn't ask",
+                           websiteTag : "<a href='demo.html'>Demo Vue</a>",
+                           age        : 24
+                        },
+                        methods : {}})*/
 
 }(window, io));

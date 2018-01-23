@@ -1,3 +1,4 @@
+//region vars
 $divider-color : #d7e0e0;
 $theme-highlight-color : rgba(218, 38, 255, 0.26);
 $theme-highlight-complement : #f1f1f1;
@@ -15,19 +16,7 @@ $row-hover-color : rgba(0, 254, 152, 0.75);
 $col-highlight-color : rgba(255, 255, 255, 0.24);
 $row-divider-color : $divider-color;
 $row-highlight-color : $theme-highlight-color;
-
-html, body
-{ height : 100%;
-}
-
-.container
-{
-  position          : absolute;
-  top               : 50%;
-  left              : 50%;
-  -webkit-transform : translate(-50%, -50%);
-  transform         : translate(-50%, -50%);
-}
+//endregion
 
 table
 {
@@ -38,107 +27,166 @@ table
   border          : none;
   border-left     : none;
   border-right    : none;
+
+  tfoot.buttonRow, table tr.footRow
+  {
+    background-color : var(--dialogFootColor);
+  }
+
+  tfoot.buttonRow
+  {
+    border-top : 1px solid $divider-color;
+    height     : 45px;
+    padding    : 7px;
+  }
+
+  tfoot tr.highlighted
+  {
+    background-color : unset;
+  }
 }
 
-.data-table thead
+.data-table
 {
-  border-bottom : $thead-border-btm;
-}
+  thead
+  {
+    border-bottom : $thead-border-btm;
+  }
 
-.data-table tbody tr
-{
-  background-color : $table-bg-color;
-  border-bottom    : 1px solid $row-divider-color;
-}
+  tbody
+  {
+    tr
+    {
+      background-color : $table-bg-color;
+      border-bottom    : 1px solid $row-divider-color;
 
-.data-table tbody tr.highlighted
-{
-  transition : background-color .6s;
+      &.highlighted
+      {
+        transition       : background-color .6s;
+        background-color : $row-highlight-color;
+      }
+
+      &:not(.noHov):hover
+      {
+        background-color : $row-hover-color;
+      }
+
+      &:hover > td.rowActions button
+      {
+        visibility : visible;
+      }
+    }
+  }
+
+  th, td
+  {
+    padding : 5px 10px;
+    color   : #000;
+    /*border-spacing: 0;*/
+
+    select
+    {
+      max-width : 150px;
+    }
+  }
+
+  th
+  { text-align          : left;
+    background-repeat   : no-repeat;
+    background-position : calc(100% - 10px) center;
+    border-right        : 1px solid $th-color;
+    border-left         : 1px solid $th-color;
+    background-color    : $th-color;
+    color               : $th-text-color;
+    font-weight         : 600;
+  }
+
+  td
+  {
+    height      : 30px;
+    font-weight : 400;
+
+    input, th input
+    {
+      margin : 0 5px !important;
+    }
+
+    &.ctr input, &.ctr th input
+    {
+      margin : 0 auto !important;
+    }
+  }
+
+  //region col highlighting hack
+  td
+  {
+    position : relative;
+
+    &:hover::before
+    {
+      content          : "";
+      position         : absolute;
+      left             : 0;
+      right            : 0;
+      top              : -9999px;
+      bottom           : -9999px;
+      z-index          : -1;
+      background-color : $col-highlight-color;
+    }
+  }
+  //endregion
+
+  &.padInner
+  {
+    td:not(.checkCol)
+    {
+      padding : 0;
+    }
+
+    td div:not(.checkbox)
+    {
+      padding : 5px 10px;
+    }
+  }
+
+  $row-sizes : (
+      "in-between" : 35,
+      "medium" : 40,
+      "large" : 50,
+      "x-large" : 60,
+      "xx-large" : 70,
+      "xxx-large" : 80
+  );
+
+  @each $class, $val in $row-sizes
+  {
+    &#{"."}#{$class} td
+    {
+      height : #{$val}px;
+    }
+  }
+
+  tr.expanded + .expandable
+  {
+    display : table-row;
+  }
+
+  .expandable
+  {
+    text-align    : left;
+    background    : #e8e8e8;
+    border-bottom : 5px solid var(--abacusBlue);
+    /*display: none;*/
+    z-index       : 500;
+  }
+
+
 }
 
 /*noHov = no hover bg*/
-.data-table tbody tr:not(.noHov):hover
-{
-  background-color : $row-hover-color;
-}
-
-tbody tr:hover > td.rowActions button
-{
-  visibility : visible;
-}
-
-.data-table tbody tr.highlighted
-{
-  background-color : $row-highlight-color;
-}
-
-table tfoot.buttonRow, table tr.footRow
-{
-  background-color : var(--dialogFootColor);
-}
-
-table tfoot.buttonRow
-{
-  border-top : 1px solid $divider-color;
-  height     : 45px;
-  padding    : 7px;
-}
-
 .highlighted
 {
   background-color : $row-highlight-color;
-}
-
-table tfoot tr.highlighted
-{
-  background-color : unset;
-}
-
-/*region col highlighlith hack*/
-/*.data-table td*/
-/*{*/
-/*position: relative;*/
-/*}*/
-
-/*.data-table td:hover:before*/
-/*{*/
-/*content: "";*/
-/*position: absolute;*/
-/*left: 0;*/
-/*right: 0;*/
-/*top: -9999px;*/
-/*bottom: -9999px;*/
-/*z-index: -1;*/
-/*background-color: $col-highlight-color;*/
-/*}*/
-/*endregion*/
-
-.data-table th, td
-{
-  padding     : 5px 10px;
-  color       : #000;
-  font-weight : 400;
-  /*border-spacing: 0;*/
-}
-
-.data-table.padInner td:not(.checkCol)
-{
-  padding : 0;
-}
-
-.data-table.padInner td div:not(.checkbox)
-{
-  padding : 5px 10px;
-}
-
-.data-table th
-{ text-align          : left;
-  background-repeat   : no-repeat;
-  background-position : calc(100% - 10px) center;
-  border-right        : 1px solid $th-color;
-  border-left         : 1px solid $th-color;
-  background-color    : $th-color;
-  color               : $th-text-color;
 }
 
 span.checksLabel
@@ -146,165 +194,111 @@ span.checksLabel
   margin-left : 10px;
 }
 
-.data-table td
+th, td
 {
-  height : 30px;
-  /*border-right: 1px solid $table-bg-color;*/
+  &.checkCol, &.check-col, &.revealer
+  {
+    width        : 39px !important;
+    padding      : 5px 3px;
+    border-right : 1px solid $row-divider-color;
+  }
+
+  &
+  {
+    &.revealer
+    {
+      border-right : none;
+      border-left  : 1px solid $row-divider-color;
+    }
+  }
 }
 
-.data-table.inBetween td
+$td-sizes : (
+    "short" : 150,
+    "mid-short" : 120,
+    "shorter" : 100,
+    "shortest" : 50
+);
+
+td
 {
-  height : 35px;
+  @each $class, $val in $td-sizes
+  {
+    &#{"."}#{$class}
+    {
+      width : #{$val}px;
+    }
+  }
+
+  .row-actions
+  {
+    text-align : center;
+    padding    : 5px 5px;
+
+    button
+    {
+      min-width : unset !important;
+      width     : 25px !important;
+      height    : 25px !important;
+      padding   : 2px !important;
+      margin    : 0 5px !important;
+
+      &:not(.always-visible)
+      {
+        visibility : hidden;
+      }
+    }
+  }
+
+  &
+  {
+    &.no-rl-pad
+    {
+      padding : 5px 0;
+    }
+
+    &.small-rl-pad
+    {
+      padding : 5px 3px;
+    }
+
+    &.revealer
+    {
+      border-bottom       : 1px solid $row-divider-color;
+      background-image    : url("../css/images/dChevron2.png");
+      background-position : center;
+      background-repeat   : no-repeat;
+
+      div
+      {
+        background-color : #6b6b6b;
+        height           : 100%;
+        width            : 100%;
+      }
+
+      &:hover
+      {
+        background-color : #ffdf62;
+      }
+    }
+
+    &.r-chevron
+    {
+      background-image : url("../css/images/rChevron.png");
+      background-size  : 30px;
+    }
+  }
 }
 
-.data-table.medium td
+th
 {
-  height : 40px;
-  /*border-right: 1px solid $table-bg-color;*/
-}
-
-.data-table.large td
-{
-  height : 50px;
-}
-
-.data-table.larger td
-{
-  height : 60px;
-}
-
-.data-table.x-larger td
-{
-  height : 70px;
-}
-
-.data-table.xx-larger td
-{
-  height : 80px;
-}
-
-td.short
-{
-  width : 150px;
-}
-
-td.mid-short
-{
-  width : 120px;
-}
-
-td.shorter
-{
-  width : 100px;
-}
-
-td.shortest
-{
-  width : 50px;
-}
-
-td.rowActions
-{
-  text-align : center;
-  padding    : 5px 5px;
-}
-
-td.rowActions button:not(.always-visible)
-{
-  visibility : hidden;
-}
-
-td.rowActions button
-{
-  min-width : unset !important;
-  width     : 25px !important;
-  height    : 25px !important;
-  padding   : 2px !important;
-  margin    : 0 5px !important;
-}
-
-.data-table td input, th input
-{
-  margin : 0 5px !important;
-}
-
-.data-table td.ctr input, th input
-{
-  margin : 0 auto !important;
-}
-
-.data-table td select, th select
-{
-  max-width : 150px;
-}
-
-td.checkCol, th.checkCol, th.revealer, td.revealer
-{
-  width        : 39px !important;
-  padding      : 5px 3px;
-  border-right : 1px solid $row-divider-color;
-}
-
-td.no-rl-pad
-{
-  padding : 5px 0;
-}
-
-td.small-rl-pad
-{
-  padding : 5px 3px;
-}
-
-th.ar
-{
-  padding-right : 30px;
-}
-
-th.br, td.br
-{
-  border-right : 1px solid $divider-color;
-}
-
-th.bl, td.bl
-{
-  border-left : 1px solid $divider-color;
-}
-
-th.ar2
-{
-  text-align : right;
-}
-
-th.revealer, td.revealer
-{
-  border-right : none;
-  border-left  : 1px solid $row-divider-color;
-}
-
-td.revealer
-{
-  border-bottom       : 1px solid $row-divider-color;
-  background-image    : url("../css/images/dChevron2.png");
-  background-position : center;
-  background-repeat   : no-repeat;
-}
-
-td.rvRight
-{
-  background-image : url("../css/images/rChevron.png");
-  background-size  : 30px;
-}
-
-td.revealer:hover
-{
-  background-color : #ffdf62;
-}
-
-td.revealer div
-{
-  background-color : #6b6b6b;
-  height           : 100%;
-  width            : 100%;
+  &
+  {
+    &.pdr
+    {
+      padding-right : 30px;
+    }
+  }
 }
 
 .checkbox input
@@ -377,31 +371,28 @@ th .checkbox label, td .checkbox label
 }
 
 /*region data tables*/
-.data-table .expandable
+//.data-table
+
+//.data-table
+
+table
 {
-  text-align    : left;
-  background    : #e8e8e8;
-  border-bottom : 5px solid var(--abacusBlue);
-  /*display: none;*/
-  z-index       : 500;
+  .expandable
+  {
+    .expandableFixtures
+    {
+      font-size : 1.2rem;
+      float     : right;
+
+      .resultWidget
+      {
+        float        : left;
+        margin-right : 20px;
+      }
+    }
+  }
 }
 
-.data-table tr.expanded + .expandable
-{
-  display : table-row;
-}
-
-table .expandable .expandableFixtures
-{
-  font-size : 1.2rem;
-  float     : right;
-}
-
-.table .expandable .expandableFixtures .resultWidget
-{
-  float        : left;
-  margin-right : 20px;
-}
 
 .resultWidget
 {

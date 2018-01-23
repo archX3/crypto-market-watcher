@@ -12,9 +12,37 @@
 
     <link rel='stylesheet' href='/css/custom.css'/>
     <!--<script src="https://d3dy5gmtp8yhk7.cloudfront.net/2.1.6/sockjs.min.js" type="text/javascript" async="true"></script>-->
+
+    <style>
+        li span.className {
+            display: inline-block;
+            height: 50px;
+            width: 40%;
+            padding: 15px;
+            background-color: var(--normalBgColor);
+            color: var(--menuTextColor);
+            margin-right: 20px;
+            margin-bottom: 20px;
+            border: 1px solid var(--dividerColor);
+            position: relative;
+            top: 0;
+            transition: all .3s;
+            font-weight: 600;
+        }
+
+        .classes li:nth-child(n) span {
+            float: left;
+            margin-left: 6%;
+        }
+
+        li span.className:hover {
+            box-shadow: 0 4px 10px rgba(0,0,0,0.19);
+            border: 0;
+        }
+    </style>
 </head>
-<body>
-<div class="h150 w150 m0a rc50p bdr ctr">crypto watcher</div>
+<body class="ys">
+<div class="h150 w150 m0a rc50p bdr ctr badge bgp-center bgs-con mt30"></div>
 
 <!--<h1><%= title %></h1>-->
 <!--<h1><%#= apiData %></h1>-->
@@ -34,16 +62,29 @@
                 <!--<td>1H</td>-->
                 <!--<td>1D</td>-->
                 <!--<td>1W</td>-->
-                <!--<td>Market Cap (USD)</td>-->
+                <!--<td>Market Cap (USD)</td>
+               data[""],
+                         data["gdax"],
+                         data["bitMex"],
+                         data["bittrex"],
+                         data["bitfinex"],
+                         data["cex"],
+                         data["okcoin"],
+                         data["poloniex"],
+                         data["gemini"]
+
+                -->
             <!--</tr>-->
             <tr>
-                <th>ID</th>
-                <th>BUY ORDER ID</th>
-                <th>SELL ORDER ID</th>
-                <th>CURRENCY</th>
-                <th>AMOUNT</th>
-                <th>PRICE</th>
-                <th>DATE</th>
+                <th>bitstamp</th>
+                <th>gdax</th>
+                <th>bitMex</th>
+                <th>bittrex</th>
+                <th>bitfinex</th>
+                <th>cex</th>
+                <th>okcoin</th>
+                <th>poloniex</th>
+                <th>gemini</th>
             </tr>
         </thead>
         <tbody>
@@ -65,6 +106,89 @@
             </tr>-->
         </tbody>
     </table>
+
+    <ul class="classes" style="margin-top: 40px;">
+        <li>
+            <a href="viewSubjects_Grading.php?levelId=1&amp;classGroup=1&amp;levelName=Nursery A">
+                <span class="className">Nursery A</span>
+            </a>
+        </li>
+        <li>
+            <a href="viewSubjects_Grading.php?levelId=1&amp;classGroup=2&amp;levelName=Nursery B">
+                <span class="className">Nursery B</span>
+            </a>
+        </li>
+        <li>
+            <a href="viewSubjects_Grading.php?levelId=2&amp;classGroup=1&amp;levelName=KG 1 A">
+                <span class="className">KG 1 A</span>
+            </a>
+        </li>
+        <li>
+            <a href="viewSubjects_Grading.php?levelId=2&amp;classGroup=2&amp;levelName=KG 1 B">
+                <span class="className">KG 1 B</span>
+            </a>
+        </li>
+        <li>
+            <a href="viewSubjects_Grading.php?levelId=3&amp;classGroup=1&amp;levelName=KG 2 A">
+                <span class="className">KG 2 A</span>
+            </a>
+        </li>
+        <li>
+            <a href="viewSubjects_Grading.php?levelId=3&amp;classGroup=2&amp;levelName=KG 2 B">
+                <span class="className">KG 2 B</span>
+            </a>
+        </li>
+        <li>
+            <a href="viewSubjects_Grading.php?levelId=4&amp;classGroup=1&amp;levelName=Primary 1 A">
+                <span class="className">Primary 1 A</span>
+            </a>
+        </li>
+        <li>
+            <a href="viewSubjects_Grading.php?levelId=4&amp;classGroup=2&amp;levelName=Primary 1 B">
+                <span class="className">Primary 1 B</span>
+            </a>
+        </li>
+        <li>
+            <a href="viewSubjects_Grading.php?levelId=5&amp;classGroup=1&amp;levelName=Primary 2 A">
+                <span class="className">Primary 2 A</span>
+            </a>
+        </li>
+        <li>
+            <a href="viewSubjects_Grading.php?levelId=5&amp;classGroup=2&amp;levelName=Primary 2 B">
+                <span class="className">Primary 2 B</span>
+            </a>
+        </li>
+        <li>
+            <a href="viewSubjects_Grading.php?levelId=6&amp;classGroup=1&amp;levelName=Primary 3 A">
+                <span class="className">Primary 3 A</span>
+            </a>
+        </li>
+        <li>
+            <a href="viewSubjects_Grading.php?levelId=6&amp;classGroup=2&amp;levelName=Primary 3 B">
+                <span class="className">Primary 3 B</span>
+            </a>
+        </li>
+        <li>
+            <a href="viewSubjects_Grading.php?levelId=7&amp;classGroup=1&amp;levelName=Primary 4 A">
+                <span class="className">Primary 4 A</span>
+            </a>
+        </li>
+        <li>
+            <a href="viewSubjects_Grading.php?levelId=7&amp;classGroup=2&amp;levelName=Primary 4 B">
+                <span class="className">Primary 4 B</span>
+            </a>
+        </li>
+        <li>
+            <a href="viewSubjects_Grading.php?levelId=8&amp;classGroup=1&amp;levelName=Primary 5 A">
+                <span class="className">Primary 5 A</span>
+            </a>
+        </li>
+        <li>
+            <a href="viewSubjects_Grading.php?levelId=8&amp;classGroup=2&amp;levelName=Primary 5 B">
+                <span class="className">Primary 5 B</span>
+            </a>
+        </li>
+    </ul>
 </section>
 <div id="bids_placeholder"></div>
 <script src="http://localhost:3000/socket.io/socket.io.js"></script>

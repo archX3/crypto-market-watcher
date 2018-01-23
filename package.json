@@ -14,6 +14,7 @@
     "bitstamp-ws": "^0.1.1",
     "body-parser": "^1.16.1",
     "cookie-parser": "^1.4.3",
+    "crypto-socket": "^3.0.0",
     "debug": "^3.0.0",
     "ejs": "^2.5.7",
     "express": "^4.15.4",

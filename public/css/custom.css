@@ -1706,4 +1706,67 @@ footer {
 .badge {
   background-image: url("../images/23343984289_ddecd105aae271e99656_512.png"); }
 
+li span.className {
+  display: inline-block;
+  height: 40px;
+  width: 40%;
+  padding: 10px 15px;
+  background-color: var(--normalBgColor);
+  color: var(--menuTextColor);
+  margin-right: 20px;
+  margin-bottom: 20px;
+  position: relative;
+  top: 0;
+  transition: all .3s;
+  font-weight: 600;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px; }
+
+.classes li:nth-child(n) a > span {
+  float: left;
+  margin-left: 6%;
+  box-shadow: 0 0 10px var(--dividerColor);
+  text-transform: uppercase; }
+  .classes li:nth-child(n) a > span span {
+    float: right; }
+    .classes li:nth-child(n) a > span span.exc-name {
+      width: 25%;
+      display: inline-block; }
+    .classes li:nth-child(n) a > span span.v-divider {
+      line-height: 0.6;
+      font-size: 24px;
+      float: none;
+      font-weight: 400;
+      color: var(--dividerColor);
+      margin: 0 5%; }
+
+li span.className:hover {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.19);
+  border: 0; }
+
+.tabIco {
+  background-repeat: no-repeat;
+  pointer-events: none;
+  display: inline-block;
+  width: 25px;
+  height: 20px;
+  margin-right: 5px;
+  background-image: url("/css/vendor/bumble-bee-css/css/images/tabIs.png");
+  background-position: -47px -11px;
+  background-size: 350px;
+  vertical-align: text-bottom; }
+
+.tabIco.down {
+  background-position: -47px -11px; }
+
+.tabIco.up {
+  background-position: -11px -13px; }
+
+.tabIco.same {
+  background-position: -85px -11px; }
+
+.tabIco.start {
+  background-position: -122px -11px; }
+
 /*# sourceMappingURL=custom.css.map */

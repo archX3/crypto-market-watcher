@@ -1,11 +1,217 @@
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
     <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-  </body>
+    <!--<link rel='stylesheet' href='/stylesheets/style.css' />-->
+    <link rel='stylesheet' href='/stylesheets/style.css'/>
+    <link rel='stylesheet' href='/css/vendor/bumble-bee-css/css/root.css'/>
+    <link rel='stylesheet' href='/css/vendor/bumble-bee-css/css/core.css'/>
+    <link rel='stylesheet' href='/css/vendor/bumble-bee-css/css/colors.css'/>
+    <link rel='stylesheet' href='/css/vendor/bumble-bee-css/css/coreBreakDown/table.css'/>
+    <!--<link rel='stylesheet' href='../public/css/vendor/bumble-bee-css/css/core.css' />-->
+
+    <link rel='stylesheet' href='/css/custom.css'/>
+    <!--<script src="https://d3dy5gmtp8yhk7.cloudfront.net/2.1.6/sockjs.min.js" type="text/javascript" async="true"></script>-->
+
+    <style>
+        li span.className {
+            display: inline-block;
+            height: 50px;
+            width: 40%;
+            padding: 15px;
+            background-color: var(--normalBgColor);
+            color: var(--menuTextColor);
+            margin-right: 20px;
+            margin-bottom: 20px;
+            border: 1px solid var(--dividerColor);
+            position: relative;
+            top: 0;
+            transition: all .3s;
+            font-weight: 600;
+        }
+
+        .classes li:nth-child(n) span {
+            float: left;
+            margin-left: 6%;
+        }
+
+        li span.className:hover {
+            box-shadow: 0 4px 10px rgba(0,0,0,0.19);
+            border: 0;
+        }
+    </style>
+</head>
+<body class="ys">
+<div class="h150 w150 m0a rc50p bdr ctr badge bgp-center bgs-con mt30"></div>
+
+<!--<h1><%= title %></h1>-->
+<!--<h1><%#= apiData %></h1>-->
+<!--<h1></h1>-->
+<h1 class="ctr pd10 m10">CRYPTO-WATCHER</h1>
+<!--<p>Welcome to </p>-->
+
+<section class="fph ha pdlr10p" id="cryptos-container">
+    <table class="data-table medium bdr">
+        <thead>
+
+            <!--<tr>-->
+                <!--<td>Rank</td>-->
+                <!--<td>Name</td>-->
+                <!--<td>Symbol</td>-->
+                <!--<td>Price (USD)</td>-->
+                <!--<td>1H</td>-->
+                <!--<td>1D</td>-->
+                <!--<td>1W</td>-->
+                <!--<td>Market Cap (USD)</td>
+               data[""],
+                         data["gdax"],
+                         data["bitMex"],
+                         data["bittrex"],
+                         data["bitfinex"],
+                         data["cex"],
+                         data["okcoin"],
+                         data["poloniex"],
+                         data["gemini"]
+
+                -->
+            <!--</tr>-->
+            <tr>
+                <th>bitstamp</th>
+                <th>gdax</th>
+                <th>bitMex</th>
+                <th>bittrex</th>
+                <th>bitfinex</th>
+                <th>cex</th>
+                <th>okcoin</th>
+                <th>poloniex</th>
+                <th>gemini</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!--<tr v-for="coin in coins">
+                <td>{{ coin.rank }}</td>
+                <td><img v-bind:src="getCoinImage(coin.symbol)"> {{ coin.name }}</td>
+                <td>{{ coin.symbol }}</td>
+                <td>{{ coin.price_usd | currency }}</td>
+                <td>
+                    <span v-if="coin.percent_change_1h > 0">+</span>{{ coin.percent_change_1h }}%
+                </td>
+                <td>
+                    <span v-if="coin.percent_change_24h > 0">+</span>{{ coin.percent_change_24h }}%
+                </td>
+                <td>
+                    <span v-if="coin.percent_change_7d > 0">+</span>{{ coin.percent_change_7d }}%
+                </td>
+                <td>{{ coin.market_cap_usd | currency }}</td>
+            </tr>-->
+        </tbody>
+    </table>
+
+    <ul class="classes" style="margin-top: 40px;">
+        <li>
+            <a href="viewSubjects_Grading.php?levelId=1&amp;classGroup=1&amp;levelName=Nursery A">
+                <span class="className">Nursery A</span>
+            </a>
+        </li>
+        <li>
+            <a href="viewSubjects_Grading.php?levelId=1&amp;classGroup=2&amp;levelName=Nursery B">
+                <span class="className">Nursery B</span>
+            </a>
+        </li>
+        <li>
+            <a href="viewSubjects_Grading.php?levelId=2&amp;classGroup=1&amp;levelName=KG 1 A">
+                <span class="className">KG 1 A</span>
+            </a>
+        </li>
+        <li>
+            <a href="viewSubjects_Grading.php?levelId=2&amp;classGroup=2&amp;levelName=KG 1 B">
+                <span class="className">KG 1 B</span>
+            </a>
+        </li>
+        <li>
+            <a href="viewSubjects_Grading.php?levelId=3&amp;classGroup=1&amp;levelName=KG 2 A">
+                <span class="className">KG 2 A</span>
+            </a>
+        </li>
+        <li>
+            <a href="viewSubjects_Grading.php?levelId=3&amp;classGroup=2&amp;levelName=KG 2 B">
+                <span class="className">KG 2 B</span>
+            </a>
+        </li>
+        <li>
+            <a href="viewSubjects_Grading.php?levelId=4&amp;classGroup=1&amp;levelName=Primary 1 A">
+                <span class="className">Primary 1 A</span>
+            </a>
+        </li>
+        <li>
+            <a href="viewSubjects_Grading.php?levelId=4&amp;classGroup=2&amp;levelName=Primary 1 B">
+                <span class="className">Primary 1 B</span>
+            </a>
+        </li>
+        <li>
+            <a href="viewSubjects_Grading.php?levelId=5&amp;classGroup=1&amp;levelName=Primary 2 A">
+                <span class="className">Primary 2 A</span>
+            </a>
+        </li>
+        <li>
+            <a href="viewSubjects_Grading.php?levelId=5&amp;classGroup=2&amp;levelName=Primary 2 B">
+                <span class="className">Primary 2 B</span>
+            </a>
+        </li>
+        <li>
+            <a href="viewSubjects_Grading.php?levelId=6&amp;classGroup=1&amp;levelName=Primary 3 A">
+                <span class="className">Primary 3 A</span>
+            </a>
+        </li>
+        <li>
+            <a href="viewSubjects_Grading.php?levelId=6&amp;classGroup=2&amp;levelName=Primary 3 B">
+                <span class="className">Primary 3 B</span>
+            </a>
+        </li>
+        <li>
+            <a href="viewSubjects_Grading.php?levelId=7&amp;classGroup=1&amp;levelName=Primary 4 A">
+                <span class="className">Primary 4 A</span>
+            </a>
+        </li>
+        <li>
+            <a href="viewSubjects_Grading.php?levelId=7&amp;classGroup=2&amp;levelName=Primary 4 B">
+                <span class="className">Primary 4 B</span>
+            </a>
+        </li>
+        <li>
+            <a href="viewSubjects_Grading.php?levelId=8&amp;classGroup=1&amp;levelName=Primary 5 A">
+                <span class="className">Primary 5 A</span>
+            </a>
+        </li>
+        <li>
+            <a href="viewSubjects_Grading.php?levelId=8&amp;classGroup=2&amp;levelName=Primary 5 B">
+                <span class="className">Primary 5 B</span>
+            </a>
+        </li>
+    </ul>
+</section>
+<div id="bids_placeholder"></div>
+<script src="http://localhost:3000/socket.io/socket.io.js"></script>
+<!--<script src="/js/socket.js"></script>-->
+
+<script src="/js/base.min.js"></script>
+<script src="/js/Barge.DomCore.js"></script>
+<script src="/js/Barge.Events.js"></script>
+<!--<script src="/js/Barge.Events.EventType.js"></script>-->
+<script src="/js/Barge.Dom.TableSorter.js"></script>
+<script src="/js/Barge.Dom.Table.js"></script>
+<script src="/js/Barge.Ajax.js"></script>
+
+<script src="/js/vue.js"></script>
+<script src="/js/vue2-filters.min.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<!--<script src="https://d3dy5gmtp8yhk7.cloudfront.net/2.1/pusher.min.js"></script>-->
+<script src="/js/crypto.js"></script>
+
+
+
+<script >
+    console.log(<%# ama %>);
+</script>
+</body>
 </html>

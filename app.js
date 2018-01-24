@@ -1,8 +1,8 @@
 const express = require('express');
 const http = require('http');
 const bitCoin = require('./bitcoin');
-
 const index = require('./routes/index');
+
 
 const app = express();
 const server = http.createServer(app);

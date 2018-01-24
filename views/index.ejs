@@ -51,7 +51,7 @@
                 <span class="className">
                     <span class="fn exc-name">{{key}}</span>
                     <span class="v-divider">|</span>
-                    <span class="fn">{{ val.price }}</span>
+                    <span class="fn">(USD) {{ val.price }}</span>
                     <span v-bind:class="val.change + ' tabIco'"></span>
                 </span>
                 </a>
@@ -67,7 +67,7 @@
 <script src="/js/base.min.js"></script>
 <script src="/js/Barge.DomCore.js"></script>
 <script src="/js/Barge.Events.js"></script>
-<!--<script src="/js/Barge.Events.EventType.js"></script>-->
+<script src="/js/Barge.Events.EventType.js"></script>
 <script src="/js/Barge.Dom.TableSorter.js"></script>
 <script src="/js/Barge.Dom.Table.js"></script>
 <script src="/js/Barge.Ajax.js"></script>

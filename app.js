@@ -1,8 +1,8 @@
 const express = require('express');
 const http = require('http');
 const bitCoin = require('./bitcoin');
-
 const index = require('./routes/index');
+
 
 const app = express();
 const server = http.createServer(app);
@@ -17,7 +17,7 @@ app.use('/', index);
 bitCoin(io);
 
 io.on('connection', () => {
-   console.log('Server Connected')
+   console.log('Server Connected');
 });
 
 server.listen(3000);

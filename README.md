@@ -1,6 +1,7 @@
 # Crypto Market Watcher
 
-A nodejs application to watch Cryptocurrency exchanges for the price of BTC/USD pair. This is a base repo to be used by EITs as part of learning Javascript. 
+A nodejs application to watch Cryptocurrency exchanges for the price of BTC/USD pair. 
+using Web socket. 
 
 The base was generated using Yo's [generator-express-es6](https://www.npmjs.com/package/generator-express-es6).
 
